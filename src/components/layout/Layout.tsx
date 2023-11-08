@@ -1,12 +1,17 @@
 import { FC, PropsWithChildren } from 'react'
-import Header from '@/components/header/Header'
+import Header from '@/components/layout/header/Header'
+import Meta from '@/components/seo/Meta'
+import { IMeta } from '@/interfaces/meta.interface'
+import Footer from '@/components/layout/Footer'
+import styles from './Layout.module.scss'
 
-const Layout: FC<PropsWithChildren<unknown>> = ({ children }) => {
+const Layout: FC<PropsWithChildren<IMeta>> = ({ children, title, description }) => {
   return (
-    <div>
+    <Meta title={title} description={description}>
       <Header />
-      <main>{children}</main>
-    </div>
+      <main className={styles.items}>{children}</main>
+      <Footer />
+    </Meta>
   )
 }
 
